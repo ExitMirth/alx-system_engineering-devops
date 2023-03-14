@@ -1,0 +1,2 @@
+#!/git/push
+grep -c -i "bin" /etc/passwd
