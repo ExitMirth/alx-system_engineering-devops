@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# This script configures Nginx to listen on port 80
-sed -i "s/listen 80 default_server;/listen 80 default_server;/" /etc/nginx/sites-enabled/default
-sed -i "s/listen \[::\]:80 default_server ipv6only=on;/listen \[::\]:80 default_server;/" /etc/nginx/sites-enabled/default
-sed -i "s/ ipv6only=on//" /etc/nginx/sites-available/default
-service nginx restart
+# Configures an Nginx server to listen on port 80.
 
-echo "OK"
+# remove the default Nginx configuration file
+rm /etc/nginx/sites-enabled/default
+# Configure Nginx to listen on port 80 for all active IPv4 IPs
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+# restart nginx
+service nginx restart 
